@@ -23,8 +23,12 @@ env:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ARM64]
 
-    runs-on: ubuntu-latest
+    # uses ubuntu-latest and ARM64-based image
+    runs-on: ${{ matrix.os }}
     permissions:
       contents: read
       packages: write
