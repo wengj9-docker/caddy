@@ -36,7 +36,7 @@ jobs:
       - name: Get Image Names
         run: |
           echo "IMAGE_BASE=docker://$(cat Dockerfile | gawk 'match($0, /^FROM\s+(.+)$/, groups) {print groups[1]}')" | tee -a $GITHUB_ENV
-          echo "IMAGE_DERIVED=docker://ghcr.io/${GITHUB_REPOSITORY}:master" | tee -a $GITHUB_ENV
+          echo "IMAGE_DERIVED=docker://ghcr.io/${GITHUB_REPOSITORY}:main" | tee -a $GITHUB_ENV
     
       # From: https://www.flypenguin.de/2021/07/30/auto-rebuild-docker-images-if-base-image-changes-using-github-actions/
       # only execute subsequent steps if an update is actually NEEDED.
