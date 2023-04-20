@@ -4,7 +4,8 @@ RUN xcaddy build \
     --with github.com/abiosoft/caddy-json-schema \
     --with github.com/caddy-dns/cloudflare \
     --with github.com/mholt/caddy-l4 \
-    --with github.com/lucaslorentz/caddy-docker-proxy/v2
+    --with github.com/lucaslorentz/caddy-docker-proxy/v2 \
+    --with github.com/fvbommel/caddy-dns-ip-range
 
 FROM caddy:alpine
 
