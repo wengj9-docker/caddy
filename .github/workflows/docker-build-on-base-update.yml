@@ -59,8 +59,8 @@ jobs:
         id: baseupdatecheck
         uses: lucacome/docker-image-update-checker@v2.0.0
         with:
-          base-image: docker://caddy:alpine
-          derived-image: ${{ env.IMAGE_NAME }}
+          base-image: caddy:alpine
+          image: ${{ env.IMAGE_NAME }}
 
       # Workaround: https://github.com/docker/build-push-action/issues/461
       - name: Setup Docker buildx
@@ -105,13 +105,21 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - build
+
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+
     steps:
       - name: Docker Image Update Checker
         id: baseupdatecheck
         uses: lucacome/docker-image-update-checker@v2.0.0
         with:
-          base-image: docker://caddy:alpine
-          derived-image: docker://${{ env.IMAGE_NAME }}
+          base-image: caddy:alpine
+          image: ${{ env.IMAGE_NAME }}
 
       - name: Download digests
         uses: actions/download-artifact@v4
