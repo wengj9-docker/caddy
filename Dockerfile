@@ -9,7 +9,8 @@ RUN xcaddy build \
     --with github.com/caddyserver/forwardproxy \
     --with github.com/hslatman/caddy-crowdsec-bouncer/http \
     --with github.com/hslatman/caddy-crowdsec-bouncer/layer4 \
-    --with github.com/hslatman/caddy-crowdsec-bouncer/appsec
+    --with github.com/hslatman/caddy-crowdsec-bouncer/appsec \
+    --with github.com/greenpau/caddy-security
 
 FROM caddy:alpine
 
