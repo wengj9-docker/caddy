@@ -1,5 +1,7 @@
 FROM caddy:builder-alpine AS builder
 
+ENV GOTOOLCHAIN=go1.24.2
+
 RUN xcaddy build \
     --with github.com/abiosoft/caddy-json-schema \
     --with github.com/caddy-dns/cloudflare \
