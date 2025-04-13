@@ -1,7 +1,5 @@
 FROM caddy:builder-alpine AS builder
 
-ENV GOTOOLCHAIN=go1.24.2
-
 RUN xcaddy build \
     --with github.com/abiosoft/caddy-json-schema \
     --with github.com/caddy-dns/cloudflare \
@@ -11,8 +9,7 @@ RUN xcaddy build \
     --with github.com/caddyserver/forwardproxy \
     --with github.com/hslatman/caddy-crowdsec-bouncer/http \
     --with github.com/hslatman/caddy-crowdsec-bouncer/layer4 \
-    --with github.com/hslatman/caddy-crowdsec-bouncer/appsec \
-    --with github.com/greenpau/caddy-security
+    --with github.com/hslatman/caddy-crowdsec-bouncer/appsec
 
 FROM caddy:alpine
 
